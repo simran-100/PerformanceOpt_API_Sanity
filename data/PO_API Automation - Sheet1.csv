@@ -1,0 +1,980 @@
+Test Id,Test scenario,Test case,Priority,Body,Methods / Request Type,Test Steps,Expected status code,Error,Validate,Expected result,Actual result,Status,Comments
+po_01,Creating Tactics,create a  campaign level task using tactic creation api,,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,200,FALSE,on,,,,
+po_02,,"Validate if ""status"" accepts ""draft""",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,200,FALSE,on,,,,
+po_03,,"Validate if ""status"" accepts ""on""",,"{
+        ""tactic_fields"": {
+                ""status"": ""on"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,200,FALSE,on,,,,
+po_04,,"Validate if ""status"" accepts ""off""",,"{
+        ""tactic_fields"": {
+                ""status"": ""off"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,200,FALSE,on,,,,
+po_05,,"Validate if ""status"" accepts null",,"{
+        ""tactic_fields"": {
+                ""status"": null,
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,400,TRUE,-,,,,
+po_06,,"Validate if ""status"" accepts invalid value",,"{
+        ""tactic_fields"": {
+                ""status"": ""xyz"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,400,TRUE,"['""xyz"" is not a valid choice.']",,,,
+po_07,,"Validate if ""status"" accepts integer value",,"{
+        ""tactic_fields"": {
+                ""status"": 123,
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,400,TRUE,-,,,,
+po_08,,"Validate if  ""date_schedule"" parameter accepts ""continuously""",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,200,FALSE,continuously,,,,
+po_09,,"Validate if  ""date_schedule"" parameter accepts ""between_dates""",,"{
+	""tactic_fields"": {
+		""status"": ""draft"",
+		""date_schedule"": ""between_dates"",
+		""level"": ""campaign"",
+		""tasks"": [{
+			""task"": ""pause_campaign"",
+			""action_execution_frequency"": 1,
+			""meta_data"": {},
+			""conditions"": {
+				""child_conditions"": [{
+					""name"": ""fb_primary_actions_post_engagement"",
+					""time"": ""yesterday"",
+					""condition"": "">="",
+					""value"": 0,
+					""rel_child"": ""AND"",
+					""aggregate"": """",
+					""child_conditions"": [],
+					""child_groups"": []
+				}],
+				""child_groups"": []
+			}
+		}],
+		""setup_type"": ""exp"",
+		""task_sequence"": null,
+		""objective"": """",
+		""start_date"": ""2021-05-14"",
+		""end_date"": ""2021-05-15""
+
+	},
+	""filters_fields"": {
+		""tactic_name"": ""TestQA"",
+		""recalculate_filter_flag"": ""off"",
+		""tactic_id"": 8368,
+		""filters"": [{
+			""criteria_name"": ""campaign status"",
+			""condition"": ""is"",
+			""value"": ""active""
+		}],
+		""filtered_ids"": [{
+			""fb_id"": ""12345467891011120"",
+			""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+		}]
+	}
+}",POST,,200,FALSE,between_dates,,,,
+po_10,,"Validate ""start_date"" when ""start_date"" and ""end_date"" have valid dates.",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""between_dates"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """",
+                ""start_date"": ""2021-05-15"",
+                ""end_date"": ""2021-05-15""
+
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,200,FALSE,2021-05-15,,,,
+po_11,,"Validate ""end_date"" when ""start_date"" and ""end_date"" have valid dates.",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""between_dates"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """",
+                ""start_date"": ""2021-05-14"",
+                ""end_date"": ""2021-05-15""
+
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,200,FALSE,2021-05-15,,,,
+po_12,,"Validate if  ""start_date"" is null and ""end_date"" has a valid date.",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""between_dates"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """",
+                ""start_date"": null,
+                ""end_date"": ""2021-05-15""
+
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,400,FALSE,-,,,,
+po_13,,"Validate if  ""end_date"" is null and ""start_date"" has a valid date.",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""between_dates"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """",
+                ""start_date"": ""2021-05-15"",
+                ""end_date"": null
+
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,400,FALSE,-,,,,
+po_14,,"Validate if  ""end_date"" is less than ""start_date""",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""between_dates"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """",
+                ""start_date"": ""2021-05-15"",
+                ""end_date"": ""2021-05-14"",
+
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,400,FALSE,-,,,,
+po_15,,"Validate if ""level"" accepts ""campaign""",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,,,,,,,
+po_16,,"Validate if ""level"" accepts ""adset""",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""adset"",
+                ""tasks"": [{
+                        ""task"": ""pause_adset"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,,,,,,,
+po_17,,"Validate if ""level"" accepts ""ad""",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""ad"",
+                ""tasks"": [{
+                        ""task"": ""pause_ad"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,,,,,,,
+po_18,,"Validate if ""level"" accepts invalid option",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""abc"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,,,,,,,
+po_19,,"Validate if ""level"" accepts integer",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": 123,
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,,,,,,,
+po_20,,"Validate if ""client_name"" accepts valid string",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,,,,,,,
+po_21,,"Validate if ""client_name"" accepts integer",,"{
+        ""tactic_fields"": {
+                ""status"": ""draft"",
+                ""date_schedule"": ""continuously"",
+                ""level"": ""campaign"",
+                ""tasks"": [{
+                        ""task"": ""pause_campaign"",
+                        ""action_execution_frequency"": 1,
+                        ""meta_data"": {},
+                        ""conditions"": {
+                                ""child_conditions"": [{
+                                        ""name"": ""fb_primary_actions_post_engagement"",
+                                        ""time"": ""yesterday"",
+                                        ""condition"": "">="",
+                                        ""value"": 0,
+                                        ""rel_child"": ""AND"",
+                                        ""aggregate"": """",
+                                        ""child_conditions"": [],
+                                        ""child_groups"": []
+                                }],
+                                ""child_groups"": []
+                        }
+                }],
+                ""setup_type"": ""exp"",
+                ""task_sequence"": null,
+                ""objective"": """"
+        },
+        ""filters_fields"": {
+                ""tactic_name"": ""TestQA"",
+                ""recalculate_filter_flag"": ""off"",
+                ""tactic_id"": 8368,
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active""
+                }],
+                ""filtered_ids"": [{
+                        ""fb_id"": ""12345467891011120"",
+                        ""name"": ""DUMMY NAME: aipsm_TEST_FBIN_O:AS_Base:Multi_*AQ-E:M:T:-TEST-N-BRD--0321-48*_DEFAULT_Mar21_sanity_appinstall1""
+                }]
+        }
+}",POST,,,,,,,,
+po_22,,,,,,,,,,,,,
+po_23,,,,,,,,,,,,,
+po_24,,,,,,,,,,,,,
+po_25,,,,,,,,,,,,,
+po_26,,,,,,,,,,,,,
+po_27,,,,,,,,,,,,,
+po_28,,,,,,,,,,,,,
+po_29,,,,,,,,,,,,,
+po_30,,,,,,,,,,,,,
+po_31,,,,,,,,,,,,,
+po_32,,,,,,,,,,,,,
+po_33,,,,,,,,,,,,,
+po_34,,,,,,,,,,,,,
+po_35,,,,,,,,,,,,,
+po_36,,,,,,,,,,,,,
+po_37,,,,,,,,,,,,,
+po_38,,,,,,,,,,,,,
+po_39,,,,,,,,,,,,,
+po_40,,,,,,,,,,,,,
+po_41,,,,,,,,,,,,,
+po_42,,,,,,,,,,,,,
+po_43,,,,,,,,,,,,,
+po_44,,,,,,,,,,,,,
+po_45,,,,,,,,,,,,,
+po_46,,,,,,,,,,,,,
+po_47,,,,,,,,,,,,,
+po_48,,,,,,,,,,,,,
+po_49,,,,,,,,,,,,,
+po_50,,,,,,,,,,,,,
+po_51,,,,,,,,,,,,,
+po_52,,,,,,,,,,,,,
+po_53,,,,,,,,,,,,,
+po_54,,,,,,,,,,,,,
+po_55,,,,,,,,,,,,,
+po_56,,,,,,,,,,,,,
+po_57,,,,,,,,,,,,,
+po_58,,,,,,,,,,,,,
+po_59,,,,,,,,,,,,,
+po_60,,,,,,,,,,,,,
+po_61,,,,,,,,,,,,,
+po_62,,,,,,,,,,,,,
+po_63,,,,,,,,,,,,,
+po_64,,,,,,,,,,,,,
+po_65,,,,,,,,,,,,,
+po_66,,,,,,,,,,,,,
+po_67,,,,,,,,,,,,,
+po_68,,,,,,,,,,,,,
+po_69,,,,,,,,,,,,,
+po_70,,,,,,,,,,,,,
+po_71,,,,,,,,,,,,,
+po_72,,,,,,,,,,,,,
+po_73,,,,,,,,,,,,,
+po_74,,,,,,,,,,,,,
+po_75,,,,,,,,,,,,,
+po_76,,,,,,,,,,,,,
+po_77,,,,,,,,,,,,,
+po_78,,,,,,,,,,,,,
+po_79,,,,,,,,,,,,,
+po_80,,,,,,,,,,,,,
+po_81,,,,,,,,,,,,,
+po_82,,,,,,,,,,,,,
+po_83,,,,,,,,,,,,,
+po_84,,,,,,,,,,,,,
+po_85,,,,,,,,,,,,,
+po_86,,,,,,,,,,,,,
+po_87,,,,,,,,,,,,,
+po_88,,,,,,,,,,,,,
+po_89,,,,,,,,,,,,,
+po_90,,,,,,,,,,,,,
+po_91,,,,,,,,,,,,,
+po_92,,,,,,,,,,,,,
+po_93,,,,,,,,,,,,,
+po_94,,,,,,,,,,,,,
+po_95,,,,,,,,,,,,,
+po_96,,,,,,,,,,,,,
+po_97,,,,,,,,,,,,,
+po_98,,,,,,,,,,,,,
+po_99,,,,,,,,,,,,,
+po_100,,,,,,,,,,,,,

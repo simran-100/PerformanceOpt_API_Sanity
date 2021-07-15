@@ -1,0 +1,103 @@
+Test Id,Test scenario,Test case,Priority,Test Data,Methods / Request Type,Test Steps,Expected status code,Expected result ,Actual result,Status,Comments
+po_01,Creating Tactics - step 1,create a  campaign level task using tactic creation api,P0,"{
+        ""status"": ""draft"",
+        ""date_schedule"": ""continuously"",
+        ""level"": ""campaign"",
+        ""client_name"": ""demo client"",
+        ""type"": ""performance"",
+        ""tasks"": [{
+                ""task"": ""pause_campaign"",
+                ""meta_data"": {},
+                ""conditions"": {
+                        ""child_conditions"": [{
+                                ""name"": ""fb_primary_actions_post_engagement"",
+                                ""time"": ""today"",
+                                ""condition"": "">="",
+                                ""value"": 0,
+                                ""rel_child"": ""AND"",
+                                ""aggregate"": """",
+                                ""child_conditions"": [],
+                                ""child_groups"": []
+                        }],
+                        ""child_groups"": []
+                }
+        }],
+        ""setup_type"": ""exp"",
+        ""task_sequence"": null,
+        ""objective"": """"
+}",POST,"1. Use the api as given in test data with the json.
+2. Do a post request on API. 
+3. And validate the result as per expected",200,"1. Status should be 200 OK.
+2. Response time should be less than 500ms.
+3. Response:{
+    ""error"": false,
+    ""data"": {
+        ""id"": 5231,
+        ""name"": null,
+        ""start_date"": null,
+        ""end_date"": null,
+        ""status"": ""draft"",
+        ""ad_account_id"": 99,
+        ""auth_user"": 11,
+        ""tasks"": [
+            {
+                ""id"": 6152,
+                ""dsl"": ""when fb_primary_actions_post_engagement  for today >= 0 perform the following actions \n \tPAUSE_CAMPAIGN\nend"",
+                ""logic"": ""T1"",
+                ""type"": """",
+                ""value"": """",
+                ""tactic"": 5231,
+                ""triggers"": [
+                    {
+                        ""name"": ""fb_primary_actions_post_engagement"",
+                        ""condition"": "">="",
+                        ""value"": ""0"",
+                        ""time"": ""today"",
+                        ""aggregate"": """",
+                        ""task"": 6152
+                    }
+                ],
+                ""meta_data"": {},
+                ""name"": ""PAUSE_CAMPAIGN""
+            }
+        ],
+        ""filtered_ids"": null,
+        ""recalculate_filters"": null,
+        ""level"": ""campaign"",
+        ""tactic_json"": {
+            ""status"": ""draft"",
+            ""date_schedule"": ""continuously"",
+            ""level"": ""campaign"",
+            ""client_name"": ""demo client"",
+            ""type"": ""performance"",
+            ""tasks"": [
+                {
+                    ""task"": ""pause_campaign"",
+                    ""meta_data"": {},
+                    ""conditions"": {
+                        ""child_conditions"": [
+                            {
+                                ""name"": ""fb_primary_actions_post_engagement"",
+                                ""time"": ""today"",
+                                ""condition"": "">="",
+                                ""value"": 0,
+                                ""rel_child"": ""AND"",
+                                ""aggregate"": """",
+                                ""child_conditions"": [],
+                                ""child_groups"": []
+                            }
+                        ],
+                        ""child_groups"": []
+                    }
+                }
+            ],
+            ""setup_type"": ""exp"",
+            ""task_sequence"": null,
+            ""objective"": """",
+            ""ad_account_id"": 99
+        },
+        ""setup_type"": ""exp"",
+        ""frequency_limit"": null,
+        ""type"": ""performance""
+    }
+}",,,done

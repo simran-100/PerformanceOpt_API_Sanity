@@ -1,0 +1,5 @@
+{
+    "base_url" : "https://optimization-staging.pyxispm.com/api/",
+    "access_token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA2OTI2NjA1LCJqdGkiOiJkYmUzNTA3NWNiZGM0ZmQ3YTUzMDc2MTZhN2QwNGY2NSIsImVtYWlsIjoiY3JlYXRpdmUtYW5hbHlzaXNAYWlxdWlyZS5jb20iLCJ1c2VybmFtZSI6ImNyZWF0aXZlLWFuYWx5c2lzIiwiZmlyc3RfbmFtZSI6IiIsImxhc3RfbmFtZSI6IiIsImlkIjo1Mn0.NFYMqO826pn-Ky8Gfr-y7aKns2ogaLgBd-Em7fzVyig",
+    "account_id" : 36
+}

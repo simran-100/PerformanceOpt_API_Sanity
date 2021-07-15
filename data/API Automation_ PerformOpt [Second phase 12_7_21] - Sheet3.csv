@@ -1,0 +1,120 @@
+Test Id,Test scenario,Test case,Priority,Request type,Request URL,Body,Update body,Test steps,Expected status code,Error,Validate,Expected result,Actual result,Status,Comments,,
+po_sanity 01,Validate tactic validation API,"Verify the respose of the ""tacticvalidation"" API. (""success"")",P0,POST,https://optimization-staging.pyxispm.com/api/adaccount/36/tacticvalidation,"{""status"":""draft"",""date_schedule"":""continuously"",""level"":""campaign"",""tasks"":[{""task"":""add_to_name"",""action_execution_frequency"":1,""meta_data"":{""text"":""_Test Text ""},""conditions"":{""child_conditions"":[{""name"":""fb_primary_impressions"",""time"":""yesterday"",""condition"":""=="",""value"":100,""rel_child"":""AND"",""aggregate"":"""",""child_conditions"":[],""child_groups"":[]}],""child_groups"":[]}},{""task"":""remove_from_name"",""action_execution_frequency"":1,""meta_data"":{""text"":""_Test Text ""},""conditions"":{""child_conditions"":[{""name"":""fb_primary_impressions"",""time"":""yesterday"",""condition"":""=="",""value"":100,""rel_child"":""AND"",""aggregate"":"""",""child_conditions"":[],""child_groups"":[]}],""child_groups"":[]}}],""setup_type"":""story"",""task_sequence"":null,""objective"":""""}",,"Given Execute test case po_sanity 01
+        When I set api endpoint to tactic_validation
+            And Set the body of request
+            And Perform post
+        Then Validate HTTP response code
+            And Validate error
+            And Validate success",200,FALSE,TRUE,"{""error"": false, ""data"": {""success"": true, ""Reason"": ""Tactic Parameters Valid""}}",,,1,Completed,Abhishek
+po_sanity 02,Validate tactic creation API,"Verify the respose of the ""tactic"" API. (""success"")",P0,POST,https://optimization-staging.pyxispm.com/api/adaccount/36/tactic,"{""tactic_fields"":{""status"":""draft"",""date_schedule"":""continuously"",""level"":""campaign"",""tasks"":[{""task"":""add_to_name"",""action_execution_frequency"":1,""meta_data"":{""text"":""_Test Text ""},""conditions"":{""child_conditions"":[{""name"":""fb_primary_impressions"",""time"":""yesterday"",""condition"":""=="",""value"":100,""rel_child"":""AND"",""aggregate"":"""",""child_conditions"":[],""child_groups"":[]}],""child_groups"":[]}},{""task"":""remove_from_name"",""action_execution_frequency"":1,""meta_data"":{""text"":""_Test Text ""},""conditions"":{""child_conditions"":[{""name"":""fb_primary_impressions"",""time"":""yesterday"",""condition"":""=="",""value"":100,""rel_child"":""AND"",""aggregate"":"""",""child_conditions"":[],""child_groups"":[]}],""child_groups"":[]}}],""setup_type"":""story"",""task_sequence"":null,""objective"":""""},""filters_fields"":{""tactic_name"":""Test Automation"",""recalculate_filter_flag"":""off"",""tactic_id"":25994,""filters"":[{""criteria_name"":""campaign status"",""condition"":""is"",""value"":""active""}],""filtered_ids"":[{""fb_id"":""23844289993800083"",""name"":""Conversions_roman3_*AQ-R3-A-L-0120*_prelaunch""}]}}",,"Create a tactic 
+validate on tactic overview
+turn off the tactic
+validate on tactic overview
+turn on the tactic 
+validate on tactic overview
+delete the created tactic",200,FALSE,TRUE,"{""error"": false, ""data"": {""success"": true, ""tactic_id"": {tactic_id}}",,,"2, 7, 5,7,6, 7",,Abhishek
+po_sanity 03,Validate Get tactic data API,"Verify the response of the ""GET tactic data"" API. ",P0,GET,https://optimization-staging.pyxispm.com/api/adaccount/36/tactic/{tactic_id},-,,"create a tactic
+perform get and validate the response
+delete the created tactic",200,FALSE,{id},"{
+        ""error"": false,
+        ""data"": {
+                ""id"": 25996,
+                ""name"": ""Test Automation"",
+                ""start_date"": null,
+                ""end_date"": null,
+                ""status"": ""on"",
+                ""filtered_ids"": [{
+                        ""name"": ""Conversions_roman3_*AQ-R3-A-L-0120*_prelaunch"",
+                        ""fb_id"": ""23844289993800083""
+                }],
+                ""recalculate_filters"": ""off"",
+                ""level"": ""campaign"",
+                ""filters"": [{
+                        ""criteria_name"": ""campaign status"",
+                        ""condition"": ""is"",
+                        ""value"": ""active"",
+                        ""filter_group"": null
+                }],
+                ""tactic_json"": {
+                        ""name"": ""Test Automation"",
+                        ""level"": ""campaign"",
+                        ""tasks"": [{
+                                ""task"": ""add_to_name"",
+                                ""meta_data"": {
+                                        ""text"": ""_Test Text ""
+                                },
+                                ""conditions"": {
+                                        ""child_groups"": [],
+                                        ""child_conditions"": [{
+                                                ""name"": ""fb_primary_impressions"",
+                                                ""time"": ""yesterday"",
+                                                ""value"": 100,
+                                                ""aggregate"": """",
+                                                ""condition"": ""=="",
+                                                ""rel_child"": ""AND"",
+                                                ""child_groups"": [],
+                                                ""child_conditions"": []
+                                        }]
+                                },
+                                ""action_execution_frequency"": 1
+                        }, {
+                                ""task"": ""remove_from_name"",
+                                ""meta_data"": {
+                                        ""text"": ""_Test Text ""
+                                },
+                                ""conditions"": {
+                                        ""child_groups"": [],
+                                        ""child_conditions"": [{
+                                                ""name"": ""fb_primary_impressions"",
+                                                ""time"": ""yesterday"",
+                                                ""value"": 100,
+                                                ""aggregate"": """",
+                                                ""condition"": ""=="",
+                                                ""rel_child"": ""AND"",
+                                                ""child_groups"": [],
+                                                ""child_conditions"": []
+                                        }]
+                                },
+                                ""action_execution_frequency"": 1
+                        }],
+                        ""status"": ""draft"",
+                        ""objective"": """",
+                        ""setup_type"": ""story"",
+                        ""filtered_ids"": [{
+                                ""name"": ""Conversions_roman3_*AQ-R3-A-L-0120*_prelaunch"",
+                                ""fb_id"": ""23844289993800083""
+                        }],
+                        ""ad_account_id"": 36,
+                        ""date_schedule"": ""continuously"",
+                        ""task_sequence"": null
+                },
+                ""setup_type"": ""story"",
+                ""task_sequence"": [72913, 72914],
+                ""frequency_limit"": null,
+                ""type"": ""performance""
+        }
+}",,,"2, 3",,Abhishek
+po_sanity 04,Validate Update tactic data API,"Verify the response of the ""Update tactic data"" API. ",P0,PUT,https://optimization-staging.pyxispm.com/api/adaccount/95/tactic,"{""tactic_fields"":{""status"":""on"",""date_schedule"":""continuously"",""level"":""campaign"",""setup_type"":""story"",""task_sequence"":[72913,72914],""objective"":"""",""tasks"":[{""task"":""add_to_name"",""meta_data"":{""text"":""_Test Text ""},""action_execution_frequency"":1,""conditions"":{""child_conditions"":[{""name"":""fb_primary_impressions"",""time"":""yesterday"",""condition"":""=="",""value"":1,""rel_child"":""AND"",""aggregate"":"""",""child_conditions"":[],""child_groups"":[]}],""child_groups"":[]}},{""task"":""remove_from_name"",""meta_data"":{""text"":""_Test Text ""},""action_execution_frequency"":1,""conditions"":{""child_conditions"":[{""name"":""fb_primary_impressions"",""time"":""yesterday"",""condition"":""=="",""value"":100,""rel_child"":""AND"",""aggregate"":"""",""child_conditions"":[],""child_groups"":[]}],""child_groups"":[]}}]},""filters_fields"":{""tactic_name"":""Test Automation"",""recalculate_filter_flag"":""off"",""tactic_id"":25996,""filters"":[{""criteria_name"":""campaign status"",""condition"":""is"",""value"":""active""}],""filtered_ids"":[{""fb_id"":""23844289993800083"",""name"":""Conversions_roman3_*AQ-R3-A-L-0120*_prelaunch""}]}}",,"create a tactic
+update the tactic
+perform get and validate the response 
+delete the created tactic",200,FALSE,TRUE,"{""error"": false, ""data"": {""success"": true, ""tactic_id"": {tactic_id}}",,,"2, 4 & 3",,Simran
+po_sanity 05,Validate Tactic overview page  API,"Verify the response of the ""tactic overview "" page  API. ",P0,GET,https://optimization-staging.pyxispm.com/api/adaccount/36/tactics?page=1&page_size=10,-,,"create a tactic
+Validate on the overview page
+delete the created tactic",200,FALSE,{id},"{""error"": false, ""data"": {""pages"": 1442, ""page_size"": ""10"", ""current_page"": ""1"", ""count"": 14420, ""results"": [{""id"": 25996, ""name"": ""Test Automation"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""campaign"", ""error"": false, ""setup_type"": ""story"", ""created"": ""13-07-2021, 15:24:43 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""13-07-2021, 17:08:15 IST""}, {""id"": 25994, ""name"": ""Retest"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""campaign"", ""error"": false, ""setup_type"": ""story"", ""created"": ""13-07-2021, 00:56:22 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""13-07-2021, 00:56:22 IST""}, {""id"": 25992, ""name"": ""Qa test AD LEVEL NEW3 LOGS - 5"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""ad"", ""error"": false, ""setup_type"": ""story"", ""created"": ""10-07-2021, 23:45:00 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""12-07-2021, 11:55:17 IST""}, {""id"": 25991, ""name"": ""Qa test AD LEVEL NEW3 LOGS - 4"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""ad"", ""error"": false, ""setup_type"": ""story"", ""created"": ""10-07-2021, 23:44:59 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""12-07-2021, 11:52:02 IST""}, {""id"": 25990, ""name"": ""Qa test AD LEVEL NEW3 LOGS - 3"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""ad"", ""error"": false, ""setup_type"": ""story"", ""created"": ""10-07-2021, 23:44:58 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""10-07-2021, 23:44:58 IST""}, {""id"": 25989, ""name"": ""Qa test AD LEVEL NEW3 LOGS - 2"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""ad"", ""error"": false, ""setup_type"": ""story"", ""created"": ""10-07-2021, 23:44:56 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""10-07-2021, 23:44:56 IST""}, {""id"": 25988, ""name"": ""Qa test AD LEVEL NEW3 LOGS - 1"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""ad"", ""error"": false, ""setup_type"": ""story"", ""created"": ""10-07-2021, 23:44:48 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""10-07-2021, 23:44:48 IST""}, {""id"": 25987, ""name"": ""QA test  AD SET LEVEL NEW3 LOGS- 5"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""adset"", ""error"": false, ""setup_type"": ""both"", ""created"": ""10-07-2021, 23:44:44 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""10-07-2021, 23:44:44 IST""}, {""id"": 25986, ""name"": ""QA test  AD SET LEVEL NEW3 LOGS- 4"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""adset"", ""error"": false, ""setup_type"": ""both"", ""created"": ""10-07-2021, 23:44:43 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""10-07-2021, 23:44:43 IST""}, {""id"": 25985, ""name"": ""QA test  AD SET LEVEL NEW3 LOGS- 3"", ""created_by"": ""Creative Analysis"", ""status"": ""on"", ""level"": ""adset"", ""error"": false, ""setup_type"": ""both"", ""created"": ""10-07-2021, 23:44:42 IST"", ""error_count"": 0, ""type"": ""performance"", ""frequency_limit"": null, ""modified"": ""10-07-2021, 23:44:42 IST""}]}}",,,"2, 7",Completed,Simran
+po_sanity 06,Validate Delete tacic API,"Verify the response of the "" DELETE tactic"" API. ",P0,DELETE,https://optimization-staging.pyxispm.com/api/adaccount/36/tactic/{tactic_id},-,,"create a tactic
+delete the created tactic
+perform get and validate the response (check if tactic is deleted)",200,FALSE,TRUE,"{""error"": false, ""data"": {""Success"": true}}",,,"2, 8, & 3",,Simran
+po_sanity 07,"Validate the ""Filter creation"" api","Validate all the ""filtergroups"" APIs.",P1,POST,https://optimization-staging.pyxispm.com/api/adaccount/36/level/campaign/filtergroups,"{""filter_name"":""Campaign level filters"",""filters"":[{""criteria_name"":""campaign status"",""condition"":""is"",""value"":""active""},{""criteria_name"":""campaign name"",""condition"":""contains"",""value"":""abc""}]}",,"Save filter
+perform get filters and validate
+delete created filter
+perform get filters and validate
+",200,FALSE,,"{""error"": false, ""data"": {""id"": 27, ""filter_name"": ""Campaign level filters"", ""ad_account_id"": 36, ""auth_user"": 11, ""filters"": [{""criteria_name"": ""campaign name"", ""condition"": ""contains"", ""value"": ""abc"", ""tactic"": null, ""filter_group"": 27}, {""criteria_name"": ""campaign status"", ""condition"": ""is"", ""value"": ""active"", ""tactic"": null, ""filter_group"": 27}], ""level"": ""campaign""}}",,,"9,10,11,10",,
+po_sanity 08,"Validate the ""Task Overview"" page api","Validate the response of the ""tasks"" api.",P0,GET,https://optimization-api.pyxispm.com/api/adaccount/36/tactic/25994/tasks,-,,"Validate the task overview of the created tactic
+",200,FALSE,,,,,12,,
+po_sanity 09,"Validate the ""Task Logs"" page api","Validate the response of the ""logs"" api for the last execution.",P0,GET,https://optimization-api.pyxispm.com/api/adaccount/36/tactic/25994/task/72910/logs,-,,"Validate the last execution logs of the created tactic
+validate datelogs of the last execution",200,FALSE,,,,,"13, 14",,
+po_sanity 10,,,,,,,,,,,,,,,,,
+po_sanity 11,,,,,,,,,,,,,,,,,
+po_sanity 12,,,,,,,,,,,,,,,,,
+po_sanity 13,,,,,,,,,,,,,,,,,
+po_sanity 14,,,,,,,,,,,,,,,,,
