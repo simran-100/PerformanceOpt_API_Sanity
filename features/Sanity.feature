@@ -7,15 +7,15 @@ Feature: Tactic creation Step 1 API testing
   Scenario:  Validate Tactic overview page API
         Given Execute test case po_sanity 02
         When I set api endpoint to create_tactic
-            And Set the body of request
+            And Set the body of request to body
             And Perform post
         Then Validate HTTP response code
-            And Validate error
+            And Validate error from csv
             And validate Success
         When I set api endpoint to tactic_overview
             And Perform get
         Then Validate HTTP response code
-            And Validate error
+            And Validate error from csv
             And Validate tactic id from overview
             And validate pages
             And validate page_size
@@ -26,63 +26,63 @@ Feature: Tactic creation Step 1 API testing
 #    create the tactic check on task overview page
 #     Delete the tactic and again check on task overview
   Scenario:  Validate Delete tactic API
-        Given Execute test case po_sanity 02
+        Given Execute test case po_sanity 06
         When I set api endpoint to create_tactic
-            And Set the body of request
+            And Set the body of request to body
             And Perform post
         Then Validate HTTP response code
-            And Validate error
+            And Validate error from csv
             And validate Success
 
-        When I set api endpoint to task_overview
+        When I set api endpoint to get_tactic_data
             And Perform get
         Then Validate HTTP response code
-            And Validate error
-            And Validate tactic id from task overview
+            And Validate error from csv
+            And Validate tactic id from task getRequest
 
         Given Execute test case po_sanity 06
         When I set api endpoint to delete_tactic
             And Perform delete
         Then Validate HTTP response code
-            And Validate error
-            And validate Success
+            And Validate error from csv
+            And validate Success1
 
         When I set api endpoint to task_overview
             And Perform get
         Then Validate HTTP response code
-            And Validate error
-            And Validate massage
+            And Validate error true
+            And Validate message Tactic not found
 
     #Create the tactic and validate the response
     #Update the tactic and again validate the get response.[perticular updated parameter]
   Scenario:  Validate Update tactic data API
-        Given Execute test case po_sanity 02
+        Given Execute test case po_sanity 04
         When I set api endpoint to create_tactic
-            And Set the body of request
+            And Set the body of request to body
             And Perform post
         Then Validate HTTP response code
-            And Validate error
+            And Validate error from csv
             And validate Success
 
        When I set api endpoint to tactic_overview
             And Perform get
         Then Validate HTTP response code
-            And Validate error
+            And Validate error from csv
             And Validate tactic id from overview
-            And Validate the name
+#            And Validate name
 
         Given Execute test case po_sanity 04
         When I set api endpoint to update_tactic
-            And Set the body of request
+            And Set the body of request to Update body
             And Perform put
         Then Validate HTTP response code
-            And Validate error
+            And Validate error from csv
             And validate Success
 
         When I set api endpoint to tactic_overview
             And Perform get
         Then Validate HTTP response code
-            And Validate error
+            And Validate error from csv
             And Validate tactic id from overview
-            And Validate the name
+#            And Validate name
 

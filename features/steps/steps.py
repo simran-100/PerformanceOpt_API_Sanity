@@ -66,11 +66,11 @@ def set_endpoint(context, endpoint):
         raise e
 
 
-@when(u'Set the body of request')
-def set_body(context):
+@when(u'Set the body of request to {body}')
+def set_body(context, body):
     try:
         # Get body code from CSV file row
-        context.body = context.row["Body"]
+        context.body = context.row[body.capitalize()] if body.lower() != 'blank' else "{}"
         log.info(f"<{context.testcase_id}> - Body set to: {context.body}")
         # log.debug(f"context.body :type{type(context.body)}, plain {context.body}, str:{str(context.body)}")
         # if context.body == "": raise Exception("There is no data in body")
@@ -83,14 +83,13 @@ def set_body(context):
 def perform_post(context):
     try:
         log.info(f"<{context.testcase_id}> - Performing post")
-        context.response = requests.post(context.baseURL + context.endpoint, data=context.body, headers=context.headers)
+        context.response = requests.post(context.baseURL + context.endpoint, data=context.body.encode('utf-8'), headers=context.headers)
         log.info(f'<{context.testcase_id}> - POST Response: {context.response.json()}')
         if str(context.ep) == "create_tactic" and context.response.json()["data"]["success"]:
             get_tactic_id(context)
             context.tactic = True
         elif str(context.ep) == "create_step_1":
             context.tactic = False
-
     except Exception as e:
         log.exception(str(e))
         raise e
@@ -109,15 +108,12 @@ def perform_get(context):
 @when(u'Perform put')
 def perform_put(context):
     try:
-        log.info(f"<{context.testcase_id}> - Performing put")
-        context.response = requests.put(context.baseURL + context.endpoint, data=context.body, headers=context.headers)
-        log.info(f'<{context.testcase_id}> - POST Response: {context.response.json()}')
-        if str(context.ep) == "update_tactic" and context.response.json()["data"]["success"]:
-            get_tactic_id(context)
-            context.tactic = True
-        elif str(context.ep) == "create_step_1":
-            context.tactic = False
-
+        log.info(f"<{context.testcase_id}> - Performing PUT")
+        if context.endpoint == "adaccount/36/tactic":
+            context.body= context.body.replace('+f"{context.tactic_id}"+',str(context.tactic_id))
+        context.response = requests.put(context.baseURL + context.endpoint, data=context.body.encode('utf-8'),
+                                        headers=context.headers)
+        log.info(f'<{context.testcase_id}> - PUT Response: {context.response.json()}')
     except Exception as e:
         log.exception(str(e))
         raise e
@@ -126,7 +122,7 @@ def perform_put(context):
 def perform_delete(context):
     try:
         log.info(f"<{context.testcase_id}> - Performing DELETE")
-        context.response = requests.get(context.baseURL + context.endpoint, headers=context.headers)
+        context.response = requests.delete(context.baseURL + context.endpoint, headers=context.headers)
         log.info(f'<{context.testcase_id}> - DELETE Response: {context.response.json()}')
     except Exception as e:
         log.exception(str(e))
@@ -151,11 +147,11 @@ def validate_response_code(context):
         raise e
 
 
-@then(u'Validate error')
-def validate_response_error(context):
+@then(u'Validate error {error_from}')
+def validate_response_error(context,error_from):
     try:
         # Get err_code from CSV file
-        err_code = context.row["Error"]
+        err_code = context.row["Error"] if error_from=="from csv" else error_from.lower()
         context.actual_err_code = context.response.json()["error"]
         # csv.read_csv(context.testcase_id, key="Error")
         log.info(f'<{context.testcase_id}> - Actule Error Code: {context.actual_err_code}')
@@ -237,6 +233,7 @@ def validate_date(context, date):
         if context.tactic:
             set_endpoint(context, "get_tactic_data")
             perform_get(context)
+
             context.actual_date = context.response.json()["data"]["date"]
             context.expected_date = context.row['Validate']
             log.info(f'<{context.testcase_id}> - Tactic status: {context.actual_date}')
@@ -275,6 +272,7 @@ def del_tactic(context):
 def validate_success(context):
     try:
         context.actual_status = context.response.json()["data"]["success"]
+        # if context.endpoint != f"adaccount/{context.ad_account_id}/tactic/{context.tactic_id}" else context.response.json()["data"]["Success"]
         context.expected_status = context.row['Validate']
         log.info(f'<{context.testcase_id}> - Tactic status: {context.actual_status}')
         assert str(context.actual_status).lower() == context.expected_status.lower(), \
@@ -287,7 +285,23 @@ def validate_success(context):
     except Exception as e:
         log.exception(str(e))
         raise e
-
+@then(u'Validate Success1')
+def validate_success1(context):
+    try:
+        context.actual_status = context.response.json()["data"]["Success"]
+        # if context.endpoint != f"adaccount/{context.ad_account_id}/tactic/{context.tactic_id}" else context.response.json()["data"]["Success"]
+        context.expected_status = context.row['Validate']
+        log.info(f'<{context.testcase_id}> - Tactic status: {context.actual_status}')
+        assert str(context.actual_status).lower() == context.expected_status.lower(), \
+            log.exception(
+                f'<{context.testcase_id}> - Actule Tactic status ({context.actual_status}'
+                f' does not matches Expected Error Code ({context.expected_status})')
+    except AssertionError as e:
+        log.exception(e)
+        raise e
+    except Exception as e:
+        log.exception(str(e))
+        raise e
 
 @then(u'validate pages')
 def validate_pages(context):
@@ -354,10 +368,12 @@ def validate_count(context):
         log.exception(str(e))
         raise e
 
-@then(u'Validate tactic id from overview')
-def validate_tactic_id(context):
+@then(u'Validate tactic id from {get_tacticid}')
+def validate_tactic_id(context,get_tacticid):
     try:
-        context.id = context.response.json()["data"]["results"][0]["id"]
+        #If input is "overview" then get tactic id from overview
+        #Else get tactic id from get tactic data method
+        context.id = context.response.json()["data"]["results"][0]["id"] if get_tacticid.lower()=="overview" else context.response.json()["data"]["id"]
         log.info(f'<{context.testcase_id}> - Actule number of pages: {context.tactic_id}')
         assert context.tactic_id == context.id, \
             log.exception(
@@ -370,31 +386,31 @@ def validate_tactic_id(context):
         log.exception(str(e))
         raise e
 
-@then(u'Validate tactic id from task overview')
-def validate_task_overview(context):
-    try:
-        context.id_overview = context.response.json()["data"][0]["id"]
-        log.info(f'<{context.testcase_id}> - tactic id on overview is: {context.tactic_id}')
-        assert context.tactic_id == context.id_overview, \
-            log.exception(
-                f'<{context.testcase_id}> - Actule tactic id from overview is  ({context.id_overview}'
-                f' does not matches Expected tactic id after tactic creation({context.tactic_id})')
-    except AssertionError as e:
-        log.exception(e)
-        raise e
-    except Exception as e:
-        log.exception(str(e))
-        raise e
+# @then(u'Validate tactic id from task overview')
+# def validate_task_overview(context):
+#     try:
+#         context.id_overview = context.response.json()["data"][0]["id"]
+#         log.info(f'<{context.testcase_id}> - tactic id on overview is: {context.tactic_id}')
+#         assert context.tactic_id == context.id_overview, \
+#             log.exception(
+#                 f'<{context.testcase_id}> - Actule tactic id from overview is  ({context.id_overview}'
+#                 f' does not matches Expected tactic id after tactic creation({context.tactic_id})')
+#     except AssertionError as e:
+#         log.exception(e)
+#         raise e
+#     except Exception as e:
+#         log.exception(str(e))
+#         raise e
 
-@then(u'Validate massage')
-def validate_massage(context):
+@then(u'Validate message {message}')
+def validate_massage(context,message):
     try:
-        context.massage = context.response.json()["message"]
+        context.message = context.response.json()["message"]
         log.info(f'<{context.testcase_id}> - Actule tactic id : {context.tactic_id}')
-        assert "Tactic not found" == context.massage, \
+        assert message == context.message, \
             log.exception(
-                f'<{context.testcase_id}> - Actule massage is  ({context.massage}'
-                f' does not matches Expected massage)')
+                f'<{context.testcase_id}> - Actule message is  ({context.message}'
+                f' does not matches Expected message)')
     except AssertionError as e:
         log.exception(e)
         raise e
